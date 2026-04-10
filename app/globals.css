@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream text-maroon-950 antialiased;
+    font-family: var(--font-source-sans), system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-cormorant), Georgia, serif;
+  }
+}
+
+@layer components {
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold text-sm
+           bg-gold-gradient text-maroon-950 shadow-gold border border-white/30
+           transition-all duration-200 hover:shadow-gold-hover hover:-translate-y-0.5 active:scale-95;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold text-sm
+           bg-white/10 text-cream-100 border border-gold-300/50
+           transition-all duration-200 hover:bg-white/20 hover:-translate-y-0.5 active:scale-95;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold text-sm
+           bg-transparent text-maroon-900 border-2 border-maroon-900
+           transition-all duration-200 hover:bg-maroon-900/[0.08] hover:-translate-y-0.5 active:scale-95;
+  }
+
+  .section-tag {
+    @apply inline-block px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase
+           bg-maroon-900/10 border border-maroon-900/20 text-maroon-900;
+  }
+
+  .section-tag-gold {
+    @apply inline-block px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase
+           bg-gold-500/15 border border-gold-500/30 text-gold-100;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-1.5 hover:shadow-card-hover;
+  }
+}
+
+@layer utilities {
+  .font-hindi {
+    font-family: var(--font-noto-devanagari), var(--font-source-sans), system-ui, sans-serif;
+  }
+
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #c9a227 0%, #f7eccb 50%, #c9a227 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-hero {
+    background:
+      linear-gradient(135deg, rgba(26,8,16,0.96) 0%, rgba(92,26,46,0.85) 50%, rgba(122,45,69,0.7) 100%),
+      linear-gradient(160deg, #3a101d 0%, #5c1a2e 60%, #7a2d45 100%);
+  }
+
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+}
