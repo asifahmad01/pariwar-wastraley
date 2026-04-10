@@ -3,21 +3,21 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
 model Category {
-  id        String           @id @default(cuid())
-  name      String           @unique
-  createdAt DateTime         @default(now())
+  id        String            @id @default(cuid())
+  name      String            @unique
+  createdAt DateTime          @default(now())
   products  ProductCategory[]
 }
 
 model Style {
-  id        String    @id @default(cuid())
-  name      String    @unique
-  createdAt DateTime  @default(now())
+  id        String   @id @default(cuid())
+  name      String   @unique
+  createdAt DateTime @default(now())
 }
 
 model ProductCategory {
@@ -25,27 +25,28 @@ model ProductCategory {
   categoryId String
   product    Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
   category   Category @relation(fields: [categoryId], references: [id])
+
   @@id([productId, categoryId])
 }
 
 model Product {
-  id          String   @id @default(cuid())
+  id          String            @id @default(cuid())
   name        String
   nameHi      String?
-  category    String?  // legacy single-category string (kept for backward compat)
+  category    String? // legacy single-category string (kept for backward compat)
   style       String
   description String?
   price       Float?
-  showPrice   Boolean  @default(true)
+  showPrice   Boolean           @default(true)
   badge       String?
-  colors      String   // JSON array of color names
-  colorHex    String   // JSON array of hex strings
-  sizes       String   // JSON array of size strings
+  colors      String // JSON array of color names
+  colorHex    String // JSON array of hex strings
+  sizes       String // JSON array of size strings
   image       String?
   fabric      String?
-  isVisible   Boolean  @default(true)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  isVisible   Boolean           @default(true)
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
   variants    Variant[]
   categories  ProductCategory[]
 }
