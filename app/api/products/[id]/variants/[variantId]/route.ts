@@ -23,7 +23,6 @@ export async function PATCH(
     return Response.json({ error: "Expected JSON body" }, { status: 400 });
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const data: Record<string, any> = {};
   if ("stockQty" in body) data.stockQty = Math.max(0, Number(body.stockQty ?? 0));
   if ("isActive" in body) data.isActive = Boolean(body.isActive);

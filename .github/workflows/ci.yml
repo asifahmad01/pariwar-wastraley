@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main, dev]
+
+jobs:
+  lint-and-typecheck:
+    name: Lint & Type Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate Prisma Client
+        run: npx prisma generate
+
+      - name: Run ESLint
+        run: npm run lint
+
+      - name: Run TypeScript type check
+        run: npx tsc --noEmit
+
+  build-check:
+    name: Build Check
+    runs-on: ubuntu-latest
+    needs: lint-and-typecheck
+
+    env:
+      DATABASE_URL: ${{ "postgresql://neondb_owner:npg_cOj9U3EGMruw@ep-crimson-resonance-amaeitrq.c-5.us-east-1.aws.neon.tech/neondb?sslmode=require" }}
+      CLOUDINARY_CLOUD_NAME: ${{ "duhrhjeo5" }}
+      CLOUDINARY_API_KEY: ${{ "675432419192981" }}
+      CLOUDINARY_API_SECRET: ${{ "j5aE1GVfWU4m6VrLjAIjTVNllrg" }}
+      ADMIN_PASSWORD: ${{ "pariwar@admin" }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate Prisma Client
+        run: npx prisma generate
+
+      - name: Build
+        run: npm run build

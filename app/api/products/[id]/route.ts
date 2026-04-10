@@ -50,7 +50,6 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
     "colors", "colorHex", "sizes",
   ];
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const data: Record<string, any> = {};
 
   for (const key of scalarFields) {

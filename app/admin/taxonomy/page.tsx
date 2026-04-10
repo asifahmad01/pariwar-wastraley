@@ -372,7 +372,7 @@ export default function TaxonomyPage() {
             <div className="rounded-2xl border border-gold-500/10 bg-cream-50 p-5 text-sm text-maroon-800/70">
               <p className="font-semibold text-maroon-900">How categories flow to the storefront</p>
               <ol className="mt-2 space-y-1.5 list-decimal list-inside text-xs">
-                <li>Create a category here (e.g. "Saree").</li>
+                <li>Create a category here (e.g. &quot;Saree&quot;).</li>
                 <li>Assign it to products in Add/Edit Product → Category section.</li>
                 <li>The category pill automatically appears in the storefront filter bar.</li>
                 <li>Customers can click it to filter all products in that category.</li>
@@ -446,7 +446,7 @@ export default function TaxonomyPage() {
             <div className="rounded-2xl border border-gold-500/10 bg-cream-50 p-5 text-sm text-maroon-800/70">
               <p className="font-semibold text-maroon-900">How styles flow to the storefront</p>
               <ol className="mt-2 space-y-1.5 list-decimal list-inside text-xs">
-                <li>Create a style here (e.g. "Ethnic").</li>
+                <li>Create a style here (e.g. &quot;Ethnic&quot;).</li>
                 <li>Select it when adding or editing a product.</li>
                 <li>The style pill automatically appears in the storefront filter bar.</li>
                 <li>Renaming a style here updates every product that uses it — no manual reassignment needed.</li>
